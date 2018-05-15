@@ -2,28 +2,8 @@ const Discord = require("discord.js")
 const client = new Discord.Client()
 const fs = require("fs")
 
-let p = JSON.parse(fs.readFileSync(`./prefix.json`, `utf8`))
-client.on('message', message => {
-    let newp = message.content.split(" ").slice(1).join(" ")
-    if(!p[message.guild.id]) p[message.guild.id] = {
-        pre: "."
-    }
 
-    
-
-    const prefix = p[message.guild.id].pre
-
-    if(message.content.startsWith(prefix + 'prefix')) {
-        if (!message.member.hasPermission('MANAGE_GUILD')) return message.reply("**You need `Manage Server` premission");
-        if(!newp) return message.channel.send(`**Usage**: ${prefix}prefix <newprefix> `);
-        p[message.guild.id].pre = newp
-        message.channel.send(`**${message.guild.name}, prefix has been changed to __${newp}__**`)
-    }
-
-    fs.writeFile(`./prefix.json`, JSON.stringify(p), (err) => {
-        if (err) console.error(err)
-      });
-
+const prefix = "."
 
 const moment = require("moment");
 
@@ -44,7 +24,7 @@ client.on('message', message => {
        .addField('<:checkmark:439800491644289024><a:blob:439807830586032138> have a good time')
 	message.author.send({embed})
     }
-})
+});
 
 
 client.on('message', message => {                      
@@ -85,7 +65,7 @@ client.on('message', message => {
  })
               message.channel.send('**Channel Hided Successfully ! :white_check_mark:  **')            
  }
-})
+});
 
 
 client.on('message', message => {
@@ -98,7 +78,7 @@ client.on('message', message => {
  })
               message.channel.send('**Done  **')            
  }
-})
+});
 
 
 
@@ -223,7 +203,7 @@ if(!message.channel.guild) return;
                                })
                                })
                                }
-                               })
+                               });
 
 
 client.on('message', msg => {
@@ -248,7 +228,7 @@ client.on('message', msg => {
         }    
     }
     }
-})
+});
 //--------------------------------------------------------------------------
 
 client.on('message', message => {
@@ -263,7 +243,7 @@ client.on('message', message => {
      message.channel.sendEmbed(embed);
 
     }
-})
+});
 //--------------------------------------------------------------------------
 client.on('message', message => {
   var prefix = ".";
@@ -292,7 +272,7 @@ client.on('message', message => {
      message.channel.sendEmbed(embed)
 
     }
-})
+});
 //--------------------------------------------------------------------------
 client.on('message', message => {
     if (message.author.Jelly) return;
@@ -335,7 +315,7 @@ client.on('message', message => {
             embed: kickembed
         })
     }
-})
+});
 //--------------------------------------------------------------------------
 client.on('message', message => {
     if (message.author.x5bz) return;
@@ -378,7 +358,7 @@ client.on('message', message => {
             embed: banembed
         })
     }
-})
+});
 //--------------------------------------------------------------------------
 client.on('message', message => {
    if(message.content.startsWith(prefix +"avatar")) {
@@ -396,7 +376,7 @@ client.on('message', message => {
      .setTimestamp();
         message.channel.sendEmbed(embed);
     }
-})
+});
 //--------------------------------------------------------------------------
 client.on('message', message => {
      if(message.content.startsWith(prefix +"bans")) {
@@ -404,7 +384,7 @@ client.on('message', message => {
         .then(bans => message.channel.send(`The ban count **${bans.size}** Person`))
   .catch(console.error);
 }
-})
+});
 //--------------------------------------------------------------------------
 client.on("message", message => {
     const command = message.content.split(" ")[0];
@@ -435,7 +415,7 @@ client.on("message", message => {
       });
      });
     }
-})
+});
 //--------------------------------------------------------------------------
 client.on("message", message => {
 
@@ -453,7 +433,7 @@ client.on("message", message => {
      .setTimestamp();
         message.channel.send({ embed });
     }
-})
+});
 
 //-------------------------------------صوره السيرفر
 
@@ -473,7 +453,7 @@ function timeCon(time) {
 
  client.on('message', message => {
                                 if(!message.channel.guild) return;
-                       if(message.content.startsWith(prefix +'ping')) {
+                     if(message.content.startsWith(prefix +'ping')) {
                             if(!message.channel.guild) return;
                             var msg = `${Date.now() - message.createdTimestamp}`
                             var api = `${Math.round(client.ping)}`
@@ -487,7 +467,7 @@ function timeCon(time) {
          message.channel.send({embed:embed});
 
                         }
-                    })
+                    });
 //--------------------------------------------------------------------------
  client.on('message'
            , message => {
@@ -507,7 +487,7 @@ function timeCon(time) {
                 .addField('``My Language``', `[ Java Script ]`, true)
      })
     }
-})                         
+});                        
 
 //-------------------------------------------------------------------------- LOG
    
@@ -578,7 +558,7 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
 
   }
 
-})  
+})  ;
 //--------------------------------------------------------------------------
 client.on('message', message => {
 if (message.content.startsWith(prefix + "uptime")) {
@@ -622,7 +602,7 @@ if (message.content.startsWith(prefix + "uptime")) {
         message.delete();
 
 }
-})                        
+})  ;                      
 //--------------------------------------------------------------------------
 var roles = {}; 
 var token = "";
@@ -675,7 +655,7 @@ client.on("message", message => {
 			return	message.reply('** <:checkmark:439800491644289024> [ '+role1.name+' ] The role humans were given**');
 		} 
 	} 
-})                      
+})  ;                    
 
 
 
@@ -697,7 +677,7 @@ client.on('message', message => {
  
        message.channel.sendEmbed(embed);
     }
-})                                                                                                  
+});                                                                                                  
 //------------------------------------------------------------------------
 client.on('message', message => {
 
@@ -740,7 +720,7 @@ var mentionned = message.mentions.members.first();
     
 
          
-     })
+     });
 //------------------------------------------------------------------------
 
 
@@ -773,7 +753,7 @@ message.channel.sendMessage("", {embed: {
   }}).then(msg => {msg.delete(3000)});
 };
 
-})                          
+}) ;                         
 //------------------------------------------------------------------------                           
 const child_process = require("child_process");
 const adminprefix = ".";
@@ -785,11 +765,11 @@ if(message.content === adminprefix + "restart") {
           message.channel.send(`⚠️ **Done ${message.author.username}**`);
         console.log(`⚠️ جاري اعادة تشغيل البوت... ⚠️`);
         client.destroy();
-        child_process.fork(__dirname + "/bot.js");
+        child_process.fork(__dirname + "/s.js");
         console.log(`تم اعادة تشغيل البوت`);
     }
   
-  })
+  });
                            
 
   
@@ -830,7 +810,7 @@ client.on('message' , async (message) => {
 
     message.channel.send(embed)
     }
-})                      
+});                      
 
 client.on('message', message =>{
     if(message.author.bot) return;
@@ -864,7 +844,7 @@ if(!true) return;
         message.reply(` **Sorry, i can only bulk delete messages that are under 14 days old**.`)
     });
     }
-})
+});
 
    
 var googl = require('goo.gl');
@@ -886,7 +866,7 @@ client.on('ready', () => {
         console.log(err.message);
     });
 }
-})
+});
       
       
   
@@ -925,7 +905,7 @@ client.on('message', message => {
   })
 
 }
-})
+});
 
 client.on('message', message => {
   
@@ -956,16 +936,16 @@ client.on('message', message => {
   })
 
 }
-})
+});
 
   
   client.on('message', message => {
           if(message.content.startsWith(prefix + 'say'))
           message.channel.send("Nope you say")
-      })
+      });
 
       
-})
+
 
 client.on('ready', () => {
     console.log('-------------------------')
@@ -979,10 +959,16 @@ client.on('ready', () => {
     console.log('-------------------------')
     console.log(`✨ Channels: ${client.channels.size}`)
     console.log('-------------------------')
-  })
+  
+})
 
 
 
 
+
+
+
+
+client.login("NDM4OTM1MzA0NTY5ODgwNTgx.Ddx9yw.vpCZzu1zRGphmlv6Gz36zJGMzdQ");// توكن بوتك
 
 client.login(process.env.BOT_TOKEN);

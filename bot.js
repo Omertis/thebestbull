@@ -498,15 +498,15 @@ const ms = require("ms");
 if (message.author.omar) return;
 if (!message.content.startsWith(prefix)) return;
 if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-if(!message.member.hasPermission('MANAGE_ROLES')) 
-if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) 
+if(!message.member.hasPermission('MANAGE_ROLES')) return      message.channel.send('' ).then(msg => msg.delete(6000))
+if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("").then(msg => msg.delete(6000))
 var command = message.content.split(" ")[0];
 command = command.slice(prefix.length);
 var args = message.content.split(" ").slice(1);
     if(command == "mute") {
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!tomute) return message.reply("**يجب عليك المنشن اولاّ**:x: ") .then(m => m.delete(5000));
-if(tomute.hasPermission("MANAGE_MESSAGES"))return      
+if(tomute.hasPermission("MANAGE_MESSAGES"))return      message.channel.send('**للأسف لا أمتلك صلاحية** `MANAGE_MASSAGEES`');
     let muterole = message.guild.roles.find(`name`, "muted");
     //start of create role
     if(!muterole){
@@ -542,7 +542,8 @@ setTimeout(function(){
   }
 if(command === `unmute`) {
   if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**ليس لديك صلاحية لفك عن الشخص ميوت**:x: ").then(m => m.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) 
+if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("").then(msg => msg.delete(6000))
+
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   if(!toMute) return message.channel.sendMessage("**عليك المنشن أولاّ**:x: ");
 
@@ -557,51 +558,7 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES"))
 
   }
 
-})  ;
-//--------------------------------------------------------------------------
-client.on('message', message => {
-if (message.content.startsWith(prefix + "uptime")) {
-   let uptime = client.uptime;
-
-   let days = 0;
-   let hours = 0;
-   let minutes = 0;
-   let seconds = 0;
-   let notCompleted = true;
-
-   while (notCompleted) {
-
-       if (uptime >= 8.64e+7) {
-
-           days++;
-           uptime -= 8.64e+7;
-
-       } else if (uptime >= 3.6e+6) {
-
-           hours++;
-           uptime -= 3.6e+6;
-
-       } else if (uptime >= 60000) {
-
-           minutes++;
-           uptime -= 60000;
-
-       } else if (uptime >= 1000) {
-           seconds++;
-           uptime -= 1000;
-
-       }
-
-       if (uptime < 1000)  notCompleted = false;
-
-   }
-
-   message.channel.send("`" + `${days} days, ${hours} hrs, ${minutes} min , ${seconds} sec` + "`");
-
-        message.delete();
-
-}
-})  ;                      
+})  ;         
 //--------------------------------------------------------------------------
 var roles = {}; 
 var token = "";
@@ -968,6 +925,5 @@ client.on('ready', () => {
 
 
 
-client.login("NDM4OTM1MzA0NTY5ODgwNTgx.Ddx9yw.vpCZzu1zRGphmlv6Gz36zJGMzdQ");// توكن بوتك
 
 client.login(process.env.BOT_TOKEN);

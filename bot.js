@@ -498,7 +498,6 @@ const ms = require("ms");
 if (message.author.omar) return;
 if (!message.content.startsWith(prefix)) return;
 if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-if(!message.member.hasPermission('MANAGE_ROLES')) return      message.channel.send('' ).then(msg => msg.delete(6000))
 if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("").then(msg => msg.delete(6000))
 var command = message.content.split(" ")[0];
 command = command.slice(prefix.length);
@@ -542,7 +541,6 @@ setTimeout(function(){
   }
 if(command === `unmute`) {
   if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**ليس لديك صلاحية لفك عن الشخص ميوت**:x: ").then(m => m.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("").then(msg => msg.delete(6000))
 
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   if(!toMute) return message.channel.sendMessage("**عليك المنشن أولاّ**:x: ");

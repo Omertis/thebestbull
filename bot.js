@@ -830,67 +830,6 @@ client.on('ready', () => {
 
 
 
-client.on('message', message => {
-  
-  if(message.content.startsWith(prefix + 'mute')) {
-    var men = message.mentions.users.first();
-    if(!men) return message.channel.send('**Mention someone please**')
-    message.channel.send(`**Are you sure that you want to mute [ ${men} ] ?**`)
-    .then(() => { message.react("✅")})
-    .then(() => { message.react("❌")})
-      let trueFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
-      let falseFilter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
-    
-      let yes = message.createReactionCollector(trueFilter, { time: 15000 });
-   let no = message.createReactionCollector(falseFilter, { time: 15000 });
-  
-   yes.on("collect", r => {
-    let muteroleee = message.guild.roles.find("name", "Muted")
-     if(!muteroleee) return message.channel.send('Muteroleee ?')
-     men.addRole(muteroleee);
-    message.delete();
-    message.channel.send(`**[ ${men} ] Muted**`).then(m => m.delete(5000));
-  
-  })
-  
-  no.on("collect", r => {
-    message.delete();
-  
-  })
-
-}
-});
-
-client.on('message', message => {
-  
-  if(message.content.startsWith(prefix + 'unmute')) {
-    var men = message.mentions.users.first();
-    if(!men) return message.channel.send('**Mention someone please**')
-    message.channel.send(`**Are you sure that you want to mute [ ${men} ] ?**`)
-    .then(() => { message.react("✅")})
-    .then(() => { message.react("❌")})
-      let trueFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
-      let falseFilter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
-    
-      let yes = message.createReactionCollector(trueFilter, { time: 15000 });
-   let no = message.createReactionCollector(falseFilter, { time: 15000 });
-  
-   yes.on("collect", r => {
-    let muteroleee = message.guild.roles.find("name", "Muted")
-     if(!muteroleee) return message.channel.send('**Your server need `Muted` Role**').then(message.guild.createRole("name", "Muted")).then(message.channel.send("**Try again now**"))
-     men.removeRole(muteroleee);
-    message.delete();
-    message.channel.send(`**[ ${men} ] Muted**`).then(m => m.delete(5000));
-  
-  })
-  
-  no.on("collect", r => {
-    message.delete();
-  
-  })
-
-}
-});
 
   
   client.on('message', message => {

@@ -672,16 +672,7 @@ client.on("message", message => {
 
 
 //--------------------------------------------------------------------------
-client.on('message', message => {
-    if (message.content.startsWith(prefix + 'roles')) {
-        var roles = message.guild.roles.map(roles => `${roles.name}, `).join(' ')
-        const embed = new Discord.RichEmbed()
-        .setColor('#34495E')
-        .addField('Roles:',`**[${roles}]**`)
- 
-       message.channel.sendEmbed(embed);
-    }
-});                                                                                                  
+                                                                                                  
 //------------------------------------------------------------------------
 client.on('message', message => {
 

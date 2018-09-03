@@ -10,7 +10,7 @@ const moment = require("moment");
 //--------------------------------------------------------------------------
 
 client.on('message', message => {
-    if(message.content === prefix + 'help') {
+    if(message.content === prefix + 'hesadasdlp') {
         const embed = new Discord.RichEmbed()
         .setColor('#34495E')
         .setTitle('___Bull Commands___')
@@ -79,7 +79,7 @@ if (message.content.startsWith(prefix + "uptime")) {
 
 client.on('message', message => {                      
     if(!message.channel.guild) return;
-       if(message.content.startsWith(prefix + 'active')) {
+       if(message.content.startsWith(prefix + 'actsadasdsdive')) {
         let modlog = client.channels.find('name', 'waiting-for-activation');
        if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
        message.channel.sendMessage(`اضغط على الصح عشان تتفعل`).then(msg => {
@@ -141,7 +141,7 @@ client.on('message', message => {
  
 client.on('message', message => {                      
 if(!message.channel.guild) return;
-   if(message.content.startsWith(prefix + 'colors')) {
+   if(message.content.startsWith(prefix + 'colsadsadsadors')) {
    if(!message.channel.guild) return message.channel.send('**This Command Only For Servers**').then(m => m.delete(5000));
    message.channel.sendFile(`https://cdn.discordapp.com/attachments/438797856690798604/438834993259610123/unknown.png`).then(msg => {
    msg.react('❤')
@@ -521,7 +521,7 @@ function timeCon(time) {
 //--------------------------------------------------------------------------
  client.on('message'
            , message => {
-    if(message.content.startsWith(prefix +"info")) {
+    if(message.content.startsWith(prefix +"infsadsao")) {
         message.channel.send({
             embed: new Discord.RichEmbed()
                 .setAuthor(client.user.username, client.user.avatarURL)
@@ -809,7 +809,7 @@ client.on('message' , async (message) => {
 
 client.on('message', message =>{
     if(message.author.bot) return;
-    if(!message.content == (prefix+'clear'))
+    if(!message.content == (prefix+'clsadsdear'))
 if(!true) return;
     if(message.content.split(' ')[0] == (prefix+'clear')){
     var lmt = message.content.split(' ')[1]

@@ -33,7 +33,7 @@ client.on('message',async message => {
   var duration;
   var gMembers;
   var filter = m => m.author.id === message.author.id;
-  if(message.content.startsWith(prefix + "giveaway")) {
+  if(message.content.startsWith(prefix + "gييiveaway")) {
      //return message.channel.send(':heavy_multiplication_x:| **هذا الامر معطل حاليا.. ``حاول في وقت لاحق``**');
     if(!message.guild.member(message.author).hasPermission('MANAGE_GUILD')) return message.channel.send(':heavy_multiplication_x:| **يجب أن يكون لديك خاصية التعديل على السيرفر**');
     message.channel.send(`:eight_pointed_black_star:| **منشن الروم الذي تريد به القيف اواي**`).then(msgg => {
@@ -903,7 +903,7 @@ const adminprefix = ".";
 const devs = ['426471752877604874'];
 
 client.on('message', message => {
-if(message.content === adminprefix + "restart") {
+if(message.content === adminprefix + "reططstart") {
       if (!devs.includes(message.author.id)) return;
           message.channel.send(`⚠️ **Done ${message.author.username}**`);
         console.log(`⚠️ جاري اعادة تشغيل البوت... ⚠️`);
@@ -1021,10 +1021,7 @@ client.on('ready', () => {
 
 
   
-  client.on('message', message => {
-          if(message.content.startsWith(prefix + 'say'))
-          message.channel.send("Nope you say")
-      });
+  
 
       
 

@@ -26,6 +26,13 @@ client.on('message', message => {
     }
 });
 
+client.on('voiceStateUpdate', (old, now) => {
+  const channel = client.channels.get('528911817636970497');
+  const currentSize = channel.guild.members.filter(m => m.voiceChannel).size;
+  const size = channel.name.match(/\[\s(\d+)\s\]/);
+  if (!size) return channel.setName(`VLooks. ${currentSize}`);
+  if (currentSize !== size) channel.setName(`VLooks. ${currentSize}`);
+});
 
 client.on('message',async message => {
   var room;

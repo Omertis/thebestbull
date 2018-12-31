@@ -742,7 +742,7 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
 var command = message.content.split(" ")[0];
 command = command.slice(prefix.length);
 var args = message.content.split(" ").slice(1);
-    if(command == "mute") {
+    if(command == "mسشيصيبe") {
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!tomute) return message.reply("**يجب عليك المنشن اولاّ**:x: ") .then(m => m.delete(5000));
 if(tomute.hasPermission("MANAGE_MESSAGES"))return      message.channel.send('** انت موب ادارة ما معك صلاحيةاذا انت اداري لا تعطي ميوت للاداره** `MANAGE_MASSAGEES`');
@@ -779,7 +779,7 @@ setTimeout(function(){
   
 
   }
-if(command === `unmute`) {
+if(command === `uشسيute`) {
   if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**ليس لديك صلاحية لفك عن الشخص ميوت**:x: ").then(m => m.delete(5000));
 
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
@@ -797,6 +797,100 @@ if(command === `unmute`) {
   }
 
 })  ;         
+
+
+
+
+
+
+client.on('message', message => {   
+if (message.author.boss) return;
+if (!message.content.startsWith(prefix)) return;
+let command = message.content.split(" ")[0];
+command = command.slice(prefix.length);
+let args = message.content.split(" ").slice(1);
+if (command == "اسكت") {
+if (!message.channel.guild) return;
+if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("انت لا تملك صلاحيات !! ").then(msg => msg.delete(5000));
+if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
+let user = message.mentions.users.first();
+let muteRole = message.guild.roles.find("name", "muted");
+if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").then(msg => {msg.delete(5000)});
+if (message.mentions.users.size < 1) return message.reply('** يجب عليك المنشن اولاً **').then(msg => {msg.delete(5000)});
+let reason = message.content.split(" ").slice(2).join(" ");
+message.guild.member(user).addRole(muteRole);
+const muteembed = new Discord.RichEmbed()
+message.channel.send({embed : muteembed});
+var muteembeddm = new Discord.RichEmbed()
+.setAuthor(`Muted!`, user.displayAvatarURL)
+.setDescription(`
+${user} انت معاقب بميوت كتابي بسبب مخالفة القوانين 
+
+ ${message.author.tag} تمت معاقبتك بواسطة
+
+[ ${reason} ] : السبب
+
+اذا كانت العقوبة عن طريق الخطأ تكلم مع المسؤلين 
+`)
+.setFooter(`جميع الحقوق محفوظة لسيرفر  : ${message.guild.name}
+`) .setColor("RANDOM")
+ user.send( muteembeddm);
+}
+if (command == "تكلم") {
+if (!message.channel.guild) return;
+if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("انتا لا تملك صلاحيات").then(msg => msg.delete(5000));
+if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
+let user = message.mentions.users.first();
+let muteRole = message.guild.roles.find("name", "Muted");
+if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").then(msg => {msg.delete(5000)});
+if (message.mentions.users.size < 1) return message.reply('** يجب عليك المنشن اولاً **').then(msg => {msg.delete(5000)});
+let reason = message.content.split(" ").slice(2).join(" ");
+message.guild.member(user).removeRole(muteRole);
+const unmuteembed = new Discord.RichEmbed()
+message.channel.send({embed : unmuteembed}).then(msg => msg.delete(5000));
+var unmuteembeddm = new Discord.RichEmbed()
+.setDescription(`تم فك الميوت عنك ${user}`)
+.setAuthor(`UnMute!`, user.displayAvatarURL)
+.setColor("RANDOM")
+  user.send( unmuteembeddm);
+}
+});
+
+
+client.on('message', message => {
+   
+    if (message.content.startsWith(".رابط")) {
+        
+  message.channel.createInvite({
+        thing: true,
+        maxUses: 1,
+        maxAge: 86400
+    }).then(invite =>  
+      message.author.sendMessage(invite.url)
+    )
+    const embed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setDescription("| :white_check_mark:  | :heart:  تم ارسال الرابط على الخاص  ")
+      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
+              const Embed11 = new Discord.RichEmbed()
+        .setColor("RANDOM")
+                .setAuthor(message.guild.name, message.guild.iconURL)
+        .setDescription(`
+**
+---------------------
+-[${message.guild.name}]  هذا هو رابط سيرفر
+---------------------
+-هذا الرابط صالح ل 5 مستخدم فقط
+---------------------
+-هذا الرابط صالح لمده 24 ساعه فقط
+---------------------
+**`)
+      message.author.sendEmbed(Embed11)
+    }
+});
+
+
+
 //--------------------------------------------------------------------------
 var roles = {}; 
 var token = "";

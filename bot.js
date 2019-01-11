@@ -873,7 +873,7 @@ client.on('message', message => {
         .setDescription("  -تم ارسال الرابط على الخاص-  ")
       message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
               const Embed11 = new Discord.RichEmbed()
-        .setColor("RANDOM")
+        .setColor("#000000")
                 .setAuthor(message.guild.name, message.guild.iconURL)
         .setDescription(`
 **

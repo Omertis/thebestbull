@@ -859,11 +859,11 @@ var unmuteembeddm = new Discord.RichEmbed()
 
 client.on('message', message => {
    
-    if (message.content.startsWith(".رابط")) {
+    if (message.content.startsWith("رابط")) {
         
   message.channel.createInvite({
         thing: true,
-        maxUses: 1,
+        maxUses: 2,
         maxAge: 86400
     }).then(invite =>  
       message.author.sendMessage(invite.url)
@@ -880,7 +880,7 @@ client.on('message', message => {
 ---------------------
 -[${message.guild.name}]  هذا هو رابط سيرفر
 ---------------------
--هذا الرابط صالح ل 5 مستخدم فقط
+-هذا الرابط صالح ل 2 مستخدم فقط
 ---------------------
 -هذا الرابط صالح لمده 24 ساعه فقط
 ---------------------
